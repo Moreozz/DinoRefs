@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  # Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: dinorefs-backend
+    restart: unless-stopped
+    ports:
+      - "5002:5002"
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=sqlite:///dinorefs.db
+    volumes:
+      - ./data:/app/instance
+      - ./logs:/app/logs
+      - ./uploads:/app/uploads
+    networks:
+      - dinorefs-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: dinorefs-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - dinorefs-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis для кэширования (опционально)
+  redis:
+    image: redis:7-alpine
+    container_name: dinorefs-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - dinorefs-network
+    command: redis-server --appendonly yes
+
+  # PostgreSQL база данных (опционально, вместо SQLite)
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: dinorefs-postgres
+  #   restart: unless-stopped
+  #   environment:
+  #     POSTGRES_DB: dinorefs
+  #     POSTGRES_USER: dinorefs
+  #     POSTGRES_PASSWORD: your-secure-password
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - dinorefs-network
+
+volumes:
+  redis-data:
+  # postgres-data:
+
+networks:
+  dinorefs-network:
+    driver: bridge
+

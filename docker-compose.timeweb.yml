@@ -1,0 +1,76 @@
+version: '3.8'
+
+# Конфигурация для Timeweb Cloud
+services:
+  # Backend API
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: dinorefs-backend
+    restart: unless-stopped
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://dinorefs:${DB_PASSWORD}@postgres:5432/dinorefs
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=${SECRET_KEY}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - YOOMONEY_SHOP_ID=${YOOMONEY_SHOP_ID}
+      - YOOMONEY_SECRET_KEY=${YOOMONEY_SECRET_KEY}
+    volumes:
+      - ./logs:/app/logs
+      - ./uploads:/app/uploads
+    networks:
+      - dinorefs-network
+    depends_on:
+      - postgres
+      - redis
+
+  # Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: dinorefs-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+    networks:
+      - dinorefs-network
+
+  # PostgreSQL база данных
+  postgres:
+    image: postgres:15-alpine
+    container_name: dinorefs-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: dinorefs
+      POSTGRES_USER: dinorefs
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - dinorefs-network
+
+  # Redis для кэширования
+  redis:
+    image: redis:7-alpine
+    container_name: dinorefs-redis
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    networks:
+      - dinorefs-network
+    command: redis-server --appendonly yes
+
+volumes:
+  postgres-data:
+  redis-data:
+
+networks:
+  dinorefs-network:
+    driver: bridge
+
