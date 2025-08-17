@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      
+      h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: #2D3748;
+      }
+      
+      .accent {
+        color: #805AD5;
+      }
+      
+      .footer {
+        background: #f7f7f7;
+        border-top: 2px solid #805AD5;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="flex flex-col items-center justify-center h-full p-10">
+        <h1 class="text-5xl font-bold mb-6 text-center">DinoRefs: <span class="accent">Система монетизации и платежей</span></h1>
+        
+        <div class="flex items-center justify-center my-10">
+          <div class="w-1/2 pr-8">
+            <img src="/home/ubuntu/upload/search_images/lYJh9gTXxoQE.jpg" alt="DinoRefs с монетами" class="w-96 h-96 object-contain mx-auto">
+          </div>
+          
+          <div class="w-1/2 pl-8">
+            <ul class="space-y-6 text-xl text-gray-700">
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-3 text-2xl"></i>
+                <span>4 гибких тарифных плана</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-3 text-2xl"></i>
+                <span>Интеграция с российскими платежными системами</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-3 text-2xl"></i>
+                <span>Премиум функции для платных планов</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-3 text-2xl"></i>
+                <span>Система биллинга и управления подписками</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-500 mr-3 text-2xl"></i>
+                <span>Соответствие требованиям 152-ФЗ</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer mt-auto">
+        <div class="text-sm text-gray-600">DinoRefs © 2025</div>
+        <div class="text-sm text-gray-600">Слайд 1</div>
+      </div>
+    </div>
+  </body>
+</html>
+

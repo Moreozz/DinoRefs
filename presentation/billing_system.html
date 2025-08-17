@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      
+      h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: #2D3748;
+      }
+      
+      .accent {
+        color: #805AD5;
+      }
+      
+      .footer {
+        background: #f7f7f7;
+        border-top: 2px solid #805AD5;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .feature-item {
+        border-left: 3px solid #805AD5;
+        padding-left: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="p-10">
+        <h1 class="text-4xl font-bold mb-8 text-center">Система <span class="accent">биллинга</span> и управления подписками</h1>
+        
+        <div class="flex justify-center mb-8">
+          <img src="/home/ubuntu/upload/search_images/r7aTS1d9PQc4.png" alt="Дашборд биллинга" class="h-64 object-contain">
+        </div>
+        
+        <div class="grid grid-cols-2 gap-10">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Управление подписками</h3>
+            <div class="space-y-4">
+              <div class="feature-item">
+                <h4 class="text-lg font-semibold">Текущая подписка</h4>
+                <p class="text-gray-600">Отображение активного плана с датами начала и окончания периода</p>
+              </div>
+              <div class="feature-item">
+                <h4 class="text-lg font-semibold">Автоматическое продление</h4>
+                <p class="text-gray-600">Настройка автоматического продления подписки и способа оплаты</p>
+              </div>
+              <div class="feature-item">
+                <h4 class="text-lg font-semibold">Смена тарифа</h4>
+                <p class="text-gray-600">Возможность повышения или понижения тарифного плана с пересчетом стоимости</p>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Биллинг и отчетность</h3>
+            <div class="space-y-4">
+              <div class="feature-item">
+                <h4 class="text-lg font-semibold">История платежей</h4>
+                <p class="text-gray-600">Полная история транзакций с возможностью скачивания счетов и чеков</p>
+              </div>
+              <div class="feature-item">
+                <h4 class="text-lg font-semibold">Статистика использования</h4>
+                <p class="text-gray-600">Визуальные индикаторы использования лимитов по тарифному плану</p>
+              </div>
+              <div class="feature-item">
+                <h4 class="text-lg font-semibold">Уведомления</h4>
+                <p class="text-gray-600">Автоматические уведомления о приближении к лимитам и предстоящих платежах</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer mt-auto">
+        <div class="text-sm text-gray-600">DinoRefs © 2025</div>
+        <div class="text-sm text-gray-600">Слайд 5</div>
+      </div>
+    </div>
+  </body>
+</html>
+

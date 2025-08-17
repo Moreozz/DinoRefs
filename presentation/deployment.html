@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      
+      h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: #2D3748;
+      }
+      
+      .accent {
+        color: #805AD5;
+      }
+      
+      .footer {
+        background: #f7f7f7;
+        border-top: 2px solid #805AD5;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .requirement-item {
+        border-left: 3px solid #805AD5;
+        padding-left: 15px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="p-10">
+        <h1 class="text-4xl font-bold mb-8 text-center">Развертывание на <span class="accent">российских серверах</span></h1>
+        
+        <div class="flex mb-8">
+          <div class="w-1/2 pr-6">
+            <img src="/home/ubuntu/upload/search_images/J1zn8e6XtSvU.png" alt="Серверы в России" class="h-64 object-contain mx-auto">
+          </div>
+          
+          <div class="w-1/2 pl-6">
+            <h3 class="text-2xl font-bold mb-4">Рекомендуемые провайдеры</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <h4 class="font-bold text-lg">Малые проекты</h4>
+                <p class="text-gray-700">Timeweb</p>
+                <p class="text-sm text-gray-600">VPS 4 ГБ RAM</p>
+                <p class="text-sm text-gray-600">~800 руб/мес</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">Средние проекты</h4>
+                <p class="text-gray-700">Selectel</p>
+                <p class="text-sm text-gray-600">Cloud VPS 8 ГБ RAM</p>
+                <p class="text-sm text-gray-600">~2500 руб/мес</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">Крупные проекты</h4>
+                <p class="text-gray-700">MCS (Mail.ru)</p>
+                <p class="text-sm text-gray-600">Выделенный сервер</p>
+                <p class="text-sm text-gray-600">от 5000 руб/мес</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">Альтернатива</h4>
+                <p class="text-gray-700">Reg.ru</p>
+                <p class="text-sm text-gray-600">Интеграция с доменами</p>
+                <p class="text-sm text-gray-600">от 590 руб/мес</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Соответствие 152-ФЗ</h3>
+            <div class="requirement-item">
+              <h4 class="font-bold">Локализация данных</h4>
+              <p class="text-gray-700">Персональные данные граждан РФ должны храниться на серверах в России</p>
+            </div>
+            <div class="requirement-item">
+              <h4 class="font-bold">Согласие на обработку</h4>
+              <p class="text-gray-700">Обязательное получение согласия пользователей на обработку персональных данных</p>
+            </div>
+            <div class="requirement-item">
+              <h4 class="font-bold">Политика конфиденциальности</h4>
+              <p class="text-gray-700">Публичный документ с описанием обработки данных</p>
+            </div>
+          </div>
+          
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Защита от DDoS</h3>
+            <div class="requirement-item">
+              <h4 class="font-bold">Встроенная защита провайдера</h4>
+              <p class="text-gray-700">Selectel и MCS предоставляют продвинутую защиту от DDoS-атак</p>
+            </div>
+            <div class="requirement-item">
+              <h4 class="font-bold">Российские CDN</h4>
+              <p class="text-gray-700">Qrator Labs, StormWall, NGENIX - специализированные сервисы защиты</p>
+            </div>
+            <div class="requirement-item">
+              <h4 class="font-bold">Yandex SmartCaptcha</h4>
+              <p class="text-gray-700">Российский аналог reCAPTCHA для защиты форм и критичных страниц</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer mt-auto">
+        <div class="text-sm text-gray-600">DinoRefs © 2025</div>
+        <div class="text-sm text-gray-600">Слайд 6</div>
+      </div>
+    </div>
+  </body>
+</html>
+

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      
+      h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: #2D3748;
+      }
+      
+      .accent {
+        color: #805AD5;
+      }
+      
+      .footer {
+        background: #f7f7f7;
+        border-top: 2px solid #805AD5;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .plan-card {
+        border: 2px solid #E2E8F0;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+      
+      .plan-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+      
+      .plan-card.highlighted {
+        border-color: #805AD5;
+        box-shadow: 0 10px 15px -3px rgba(128, 90, 213, 0.2);
+      }
+      
+      .plan-header {
+        border-bottom: 2px solid #E2E8F0;
+        padding: 15px;
+      }
+      
+      .plan-header.highlighted {
+        background-color: #805AD5;
+        color: white;
+      }
+      
+      .plan-header.highlighted h3 {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="p-10">
+        <h1 class="text-4xl font-bold mb-8 text-center">Тарифные планы <span class="accent">DinoRefs</span></h1>
+        
+        <div class="flex justify-center mb-6">
+          <img src="/home/ubuntu/upload/search_images/618GIDPetWdM.png" alt="Тарифные планы с динозаврами" class="h-64 object-contain">
+        </div>
+        
+        <div class="grid grid-cols-4 gap-6 mt-4">
+          <!-- Free Plan -->
+          <div class="plan-card">
+            <div class="plan-header">
+              <h3 class="text-xl font-bold">🥚 Dino Egg</h3>
+              <p class="text-2xl font-bold mt-2">Бесплатно</p>
+            </div>
+            <div class="p-4">
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>До 100 рефералов/месяц</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>1 активный проект</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Базовая аналитика</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Поддержка сообщества</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Starter Plan -->
+          <div class="plan-card highlighted">
+            <div class="plan-header highlighted">
+              <h3 class="text-xl font-bold">🦕 Baby Dino</h3>
+              <p class="text-2xl font-bold mt-2">2,800₽/мес</p>
+            </div>
+            <div class="p-4">
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>До 1,000 рефералов/месяц</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>3 активных проекта</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Расширенная аналитика</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Кастомные награды</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Growth Plan -->
+          <div class="plan-card">
+            <div class="plan-header">
+              <h3 class="text-xl font-bold">🦖 T-Rex</h3>
+              <p class="text-2xl font-bold mt-2">9,500₽/мес</p>
+            </div>
+            <div class="p-4">
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>До 10,000 рефералов/месяц</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>10 активных проектов</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>API доступ</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>White-label ссылки</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Enterprise Plan -->
+          <div class="plan-card">
+            <div class="plan-header">
+              <h3 class="text-xl font-bold">👑 Dino King</h3>
+              <p class="text-2xl font-bold mt-2">По запросу</p>
+            </div>
+            <div class="p-4">
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Неограниченные рефералы</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Персональный менеджер</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>Кастомная разработка</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                  <span>On-premise установка</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer mt-auto">
+        <div class="text-sm text-gray-600">DinoRefs © 2025</div>
+        <div class="text-sm text-gray-600">Слайд 2</div>
+      </div>
+    </div>
+  </body>
+</html>
+

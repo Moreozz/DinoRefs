@@ -1,0 +1,211 @@
+{
+  "name": "DinoRefs - Платформа реферальных программ",
+  "short_name": "DinoRefs",
+  "description": "Современная платформа для создания и управления реферальными программами с аналитикой и монетизацией",
+  "version": "1.0.0",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#10b981",
+  "background_color": "#ffffff",
+  "scope": "/",
+  "lang": "ru",
+  "dir": "ltr",
+  
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Главный дашборд DinoRefs на десктопе"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Мобильная версия DinoRefs"
+    }
+  ],
+  
+  "categories": [
+    "business",
+    "productivity",
+    "finance",
+    "marketing"
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Дашборд",
+      "short_name": "Дашборд",
+      "description": "Главная панель управления",
+      "url": "/dashboard",
+      "icons": [
+        {
+          "src": "/icon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Проекты",
+      "short_name": "Проекты",
+      "description": "Управление проектами",
+      "url": "/projects",
+      "icons": [
+        {
+          "src": "/icon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Аналитика",
+      "short_name": "Аналитика",
+      "description": "Просмотр аналитики и отчетов",
+      "url": "/analytics",
+      "icons": [
+        {
+          "src": "/icon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Рефералы",
+      "short_name": "Рефералы",
+      "description": "Реферальные кампании",
+      "url": "/referrals",
+      "icons": [
+        {
+          "src": "/icon-96x96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://dinorefs.ru/manifest.json"
+    }
+  ],
+  
+  "prefer_related_applications": false,
+  
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  
+  "protocol_handlers": [
+    {
+      "protocol": "web+dinorefs",
+      "url": "/handle?protocol=%s"
+    }
+  ],
+  
+  "file_handlers": [
+    {
+      "action": "/import",
+      "accept": {
+        "text/csv": [".csv"],
+        "application/json": [".json"],
+        "application/vnd.ms-excel": [".xlsx", ".xls"]
+      }
+    }
+  ],
+  
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "files",
+          "accept": ["text/csv", "application/json", ".xlsx"]
+        }
+      ]
+    }
+  },
+  
+  "capture_links": "existing-client-navigate",
+  
+  "handle_links": "preferred",
+  
+  "id": "dinorefs-pwa",
+  
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7"
+}
+

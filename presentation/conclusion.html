@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      
+      h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: #2D3748;
+      }
+      
+      .accent {
+        color: #805AD5;
+      }
+      
+      .footer {
+        background: #f7f7f7;
+        border-top: 2px solid #805AD5;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .result-item {
+        border-left: 3px solid #805AD5;
+        padding-left: 15px;
+        margin-bottom: 15px;
+      }
+      
+      .future-item {
+        background-color: #F7FAFC;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-left: 3px solid #38B2AC;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="p-10">
+        <h1 class="text-4xl font-bold mb-8 text-center">Результаты и <span class="accent">перспективы</span></h1>
+        
+        <div class="flex">
+          <div class="w-1/2 pr-8">
+            <h3 class="text-2xl font-bold mb-4">Достигнутые результаты</h3>
+            
+            <div class="result-item">
+              <h4 class="text-lg font-semibold">Полноценная система монетизации</h4>
+              <p class="text-gray-700">4 гибких тарифных плана с разными уровнями доступа и функциональности</p>
+            </div>
+            
+            <div class="result-item">
+              <h4 class="text-lg font-semibold">Российские платежные системы</h4>
+              <p class="text-gray-700">Интеграция с ЮMoney и СБП для удобства российских пользователей</p>
+            </div>
+            
+            <div class="result-item">
+              <h4 class="text-lg font-semibold">Премиум функции</h4>
+              <p class="text-gray-700">Система ограничений и премиум-возможностей для платных планов</p>
+            </div>
+            
+            <div class="result-item">
+              <h4 class="text-lg font-semibold">Управление подписками</h4>
+              <p class="text-gray-700">Удобный интерфейс для управления тарифами и просмотра истории платежей</p>
+            </div>
+            
+            <h3 class="text-2xl font-bold mt-8 mb-4">Планы на будущее</h3>
+            
+            <div class="future-item">
+              <h4 class="text-lg font-semibold">Расширение платежных методов</h4>
+              <p class="text-gray-700">Добавление Apple Pay, Google Pay и криптовалютных платежей</p>
+            </div>
+            
+            <div class="future-item">
+              <h4 class="text-lg font-semibold">Партнерская программа</h4>
+              <p class="text-gray-700">Система комиссий для партнеров и реселлеров</p>
+            </div>
+          </div>
+          
+          <div class="w-1/2 pl-8 flex flex-col items-center justify-center">
+            <img src="/home/ubuntu/upload/search_images/yqbMrMK96CvG.jpg" alt="Бизнес-динозавр" class="h-80 object-contain mb-6">
+            
+            <div style="height: 250px; width: 100%;">
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer mt-auto">
+        <div class="text-sm text-gray-600">DinoRefs © 2025</div>
+        <div class="text-sm text-gray-600">Слайд 8</div>
+      </div>
+    </div>
+    
+    <script>
+      // Данные для графика прогнозируемого роста доходов
+      const ctx = document.getElementById('revenueChart').getContext('2d');
+      const revenueChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг'],
+          datasets: [{
+            label: 'Прогноз роста доходов',
+            data: [0, 120000, 250000, 380000, 520000, 680000, 850000, 1050000],
+            backgroundColor: 'rgba(128, 90, 213, 0.2)',
+            borderColor: '#805AD5',
+            borderWidth: 2,
+            tension: 0.4,
+            fill: true
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Прогноз роста доходов (₽)',
+              font: {
+                size: 16,
+                family: 'Montserrat'
+              }
+            },
+            legend: {
+              display: false
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return new Intl.NumberFormat('ru-RU').format(context.parsed.y) + ' ₽';
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value) {
+                  return value / 1000 + 'K ₽';
+                }
+              }
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
+

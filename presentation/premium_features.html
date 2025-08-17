@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      
+      h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: #2D3748;
+      }
+      
+      .accent {
+        color: #805AD5;
+      }
+      
+      .footer {
+        background: #f7f7f7;
+        border-top: 2px solid #805AD5;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .feature-item {
+        border-left: 3px solid #805AD5;
+        padding-left: 15px;
+        margin-bottom: 15px;
+      }
+      
+      .limit-item {
+        border-left: 3px solid #E53E3E;
+        padding-left: 15px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="p-10">
+        <h1 class="text-4xl font-bold mb-6 text-center">Премиум функции и <span class="accent">ограничения</span></h1>
+        
+        <div class="flex justify-center mb-8">
+          <img src="/home/ubuntu/upload/search_images/GX8F6IwEH8Wm.jpg" alt="Премиум доступ" class="h-48 object-contain">
+        </div>
+        
+        <div class="grid grid-cols-2 gap-10">
+          <!-- Премиум функции -->
+          <div>
+            <h3 class="text-2xl font-bold mb-4 flex items-center">
+              <i class="fas fa-crown text-yellow-500 mr-2"></i>
+              Премиум функции
+            </h3>
+            
+            <div class="feature-item">
+              <h4 class="text-lg font-semibold">Расширенная аналитика</h4>
+              <p class="text-gray-600">Детальные отчеты по источникам трафика, конверсии и поведению пользователей</p>
+            </div>
+            
+            <div class="feature-item">
+              <h4 class="text-lg font-semibold">White-label решения</h4>
+              <p class="text-gray-600">Собственный брендинг, удаление упоминаний DinoRefs из пользовательского интерфейса</p>
+            </div>
+            
+            <div class="feature-item">
+              <h4 class="text-lg font-semibold">API доступ</h4>
+              <p class="text-gray-600">Интеграция с вашими системами через REST API и webhooks</p>
+            </div>
+            
+            <div class="feature-item">
+              <h4 class="text-lg font-semibold">Приоритетная поддержка</h4>
+              <p class="text-gray-600">Гарантированное время ответа от 1 часа до 24 часов в зависимости от тарифа</p>
+            </div>
+          </div>
+          
+          <!-- Ограничения -->
+          <div>
+            <h3 class="text-2xl font-bold mb-4 flex items-center">
+              <i class="fas fa-lock text-red-500 mr-2"></i>
+              Ограничения бесплатного плана
+            </h3>
+            
+            <div class="limit-item">
+              <h4 class="text-lg font-semibold">Лимит рефералов</h4>
+              <p class="text-gray-600">Максимум 100 рефералов в месяц, дальнейшие переходы не учитываются</p>
+            </div>
+            
+            <div class="limit-item">
+              <h4 class="text-lg font-semibold">Один активный проект</h4>
+              <p class="text-gray-600">Невозможность создания нескольких параллельных кампаний</p>
+            </div>
+            
+            <div class="limit-item">
+              <h4 class="text-lg font-semibold">Базовая аналитика</h4>
+              <p class="text-gray-600">Ограниченный доступ к данным и отчетам</p>
+            </div>
+            
+            <div class="limit-item">
+              <h4 class="text-lg font-semibold">Стандартные бейджи</h4>
+              <p class="text-gray-600">Отсутствие возможности создания кастомных наград</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-8">
+          <h3 class="text-xl font-bold mb-4 text-center">Сравнение лимитов по тарифам</h3>
+          <div style="height: 250px;">
+            <canvas id="limitsChart"></canvas>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer mt-auto">
+        <div class="text-sm text-gray-600">DinoRefs © 2025</div>
+        <div class="text-sm text-gray-600">Слайд 4</div>
+      </div>
+    </div>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const ctx = document.getElementById('limitsChart').getContext('2d');
+        
+        const chart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Рефералы/месяц', 'Активные проекты', 'Кастомные награды', 'API запросы/день'],
+            datasets: [
+              {
+                label: 'Dino Egg (Free)',
+                data: [100, 1, 0, 100],
+                backgroundColor: '#E2E8F0',
+                borderColor: '#CBD5E0',
+                borderWidth: 1
+              },
+              {
+                label: 'Baby Dino',
+                data: [1000, 3, 5, 1000],
+                backgroundColor: '#9F7AEA',
+                borderColor: '#805AD5',
+                borderWidth: 1
+              },
+              {
+                label: 'T-Rex',
+                data: [10000, 10, 20, 10000],
+                backgroundColor: '#4FD1C5',
+                borderColor: '#38B2AC',
+                borderWidth: 1
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'top',
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    let label = context.dataset.label || '';
+                    if (label) {
+                      label += ': ';
+                    }
+                    if (context.parsed.y !== null) {
+                      label += context.parsed.y;
+                    }
+                    return label;
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  callback: function(value) {
+                    if (value >= 1000) {
+                      return value / 1000 + 'k';
+                    }
+                    return value;
+                  }
+                }
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Приглашение в проект - DinoRefs{% endblock %}
+
+{% block content %}
+<h2>Приглашение в проект</h2>
+
+<p>Привет, <strong>{{ user_name }}</strong>!</p>
+
+<p><strong>{{ inviter_name }}</strong> пригласил вас присоединиться к проекту <strong>"{{ project_name }}"</strong> на платформе DinoRefs.</p>
+
+<div class="highlight-box">
+    <p>Совместная работа над проектами позволяет создавать более качественные референсы и делиться опытом с коллегами.</p>
+</div>
+
+<p>Чтобы принять приглашение и начать работу над проектом, нажмите на кнопку ниже:</p>
+
+<div style="text-align: center;">
+    <a href="{{ invitation_link }}" class="button">Принять приглашение</a>
+</div>
+
+<p>Если кнопка не работает, скопируйте и вставьте эту ссылку в браузер:</p>
+<p style="word-break: break-all; color: #667eea;">{{ invitation_link }}</p>
+
+<p>Если вы не ожидали это приглашение или не знаете отправителя, просто проигнорируйте это письмо.</p>
+
+<p>Удачной работы над проектом!</p>
+{% endblock %}
+

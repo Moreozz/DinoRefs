@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}С вами поделились проектом - DinoRefs{% endblock %}
+
+{% block content %}
+<h2>С вами поделились проектом</h2>
+
+<p>Привет, <strong>{{ user_name }}</strong>!</p>
+
+<p><strong>{{ sharer_name }}</strong> поделился с вами интересным проектом <strong>"{{ project_name }}"</strong> на DinoRefs.</p>
+
+<div class="highlight-box">
+    <p>Изучение проектов других дизайнеров — отличный способ найти вдохновение и изучить новые подходы к решению задач.</p>
+</div>
+
+<p>Посмотрите проект и оцените работу автора:</p>
+
+<div style="text-align: center;">
+    <a href="{{ project_link }}" class="button">Посмотреть проект</a>
+</div>
+
+<p>Если ссылка не работает, скопируйте и вставьте её в браузер:</p>
+<p style="word-break: break-all; color: #667eea;">{{ project_link }}</p>
+
+<p>Не забудьте поставить лайк, если проект вам понравился, или оставить конструктивный комментарий!</p>
+{% endblock %}
+

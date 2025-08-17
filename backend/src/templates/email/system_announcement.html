@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}{{ announcement_title }} - DinoRefs{% endblock %}
+
+{% block content %}
+<h2>{{ announcement_title }}</h2>
+
+<p>Привет, <strong>{{ user_name }}</strong>!</p>
+
+<p>{{ announcement_text }}</p>
+
+{% if action_link %}
+<div style="text-align: center;">
+    <a href="{{ action_link }}" class="button">Подробнее</a>
+</div>
+
+<p>Если кнопка не работает, скопируйте и вставьте эту ссылку в браузер:</p>
+<p style="word-break: break-all; color: #667eea;">{{ action_link }}</p>
+{% endif %}
+
+<p>Спасибо за то, что остаетесь с DinoRefs!</p>
+{% endblock %}
+

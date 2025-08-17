@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+      
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      
+      h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif;
+        color: #2D3748;
+      }
+      
+      .accent {
+        color: #805AD5;
+      }
+      
+      .footer {
+        background: #f7f7f7;
+        border-top: 2px solid #805AD5;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .payment-system {
+        border: 2px solid #E2E8F0;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+      
+      .payment-system:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+      
+      .process-step {
+        position: relative;
+      }
+      
+      .process-step:not(:last-child)::after {
+        content: '→';
+        position: absolute;
+        top: 50%;
+        right: -20px;
+        transform: translateY(-50%);
+        color: #805AD5;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="p-6">
+        <h1 class="text-4xl font-bold mb-4 text-center">Интеграция <span class="accent">платежных систем</span></h1>
+        
+        <div class="flex justify-center mb-4">
+          <img src="/home/ubuntu/upload/search_images/iQBw8uanURDB.jpg" alt="Платежные системы России" class="h-48 object-contain">
+        </div>
+        
+        <div class="grid grid-cols-2 gap-6 mb-6">
+          <!-- ЮMoney -->
+          <div class="payment-system p-4">
+            <div class="flex items-center mb-2">
+              <div class="text-3xl mr-3">💳</div>
+              <div>
+                <h3 class="text-xl font-bold">ЮMoney</h3>
+                <p class="text-gray-600 text-sm">Банковские карты, электронные кошельки</p>
+              </div>
+            </div>
+            <ul class="space-y-1 ml-2">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                <span>Поддержка всех основных банковских карт</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                <span>Электронные кошельки ЮMoney</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                <span>Комиссия 2.8% + 30₽ за транзакцию</span>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- СБП -->
+          <div class="payment-system p-4">
+            <div class="flex items-center mb-2">
+              <div class="text-3xl mr-3">📱</div>
+              <div>
+                <h3 class="text-xl font-bold">СБП</h3>
+                <p class="text-gray-600 text-sm">Система быстрых платежей</p>
+              </div>
+            </div>
+            <ul class="space-y-1 ml-2">
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                <span>Мгновенные переводы между банками</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                <span>Оплата по QR-коду</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                <span>Комиссия 0.4-0.7% за транзакцию</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <h3 class="text-xl font-bold mb-4 text-center">Процесс оплаты</h3>
+        
+        <div class="flex justify-evenly items-center px-4">
+          <div class="process-step text-center">
+            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-1">
+              <i class="fas fa-shopping-cart text-purple-600"></i>
+            </div>
+            <p class="text-sm">Выбор тарифа</p>
+          </div>
+          
+          <div class="process-step text-center">
+            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-1">
+              <i class="fas fa-credit-card text-purple-600"></i>
+            </div>
+            <p class="text-sm">Выбор оплаты</p>
+          </div>
+          
+          <div class="process-step text-center">
+            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-1">
+              <i class="fas fa-lock text-purple-600"></i>
+            </div>
+            <p class="text-sm">Безопасная оплата</p>
+          </div>
+          
+          <div class="process-step text-center">
+            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-1">
+              <i class="fas fa-check text-purple-600"></i>
+            </div>
+            <p class="text-sm">Активация плана</p>
+          </div>
+        </div>
+        
+        <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+          <h3 class="text-xl font-bold mb-2">Безопасность транзакций</h3>
+          <div class="flex justify-between">
+            <div class="flex items-center">
+              <i class="fas fa-shield-alt text-purple-600 text-2xl mr-3"></i>
+              <span>Шифрование данных</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-history text-purple-600 text-2xl mr-3"></i>
+              <span>Мгновенные уведомления</span>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-sync-alt text-purple-600 text-2xl mr-3"></i>
+              <span>Webhook обработка</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer mt-auto">
+        <div class="text-sm text-gray-600">DinoRefs © 2025</div>
+        <div class="text-sm text-gray-600">Слайд 3</div>
+      </div>
+    </div>
+  </body>
+</html>
+
